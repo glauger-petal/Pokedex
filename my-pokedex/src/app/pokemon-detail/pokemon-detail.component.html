@@ -1,0 +1,119 @@
+<!-- <div class="pokemon-root">
+  <div class="pokemon-title">
+    <p class="pokemon-text">
+      #{{ pokemon.id }} - {{ pokemon.name | uppercase }}
+    </p>
+  </div>
+  <div class="pokemon-type">
+    <div *ngFor="let i of pokemon.types">
+      <img class="pokemon-type" src="../../assets/{{ i }}" />
+    </div>
+  </div>
+  <div class="pokemon-information">
+    <p>Other information :</p>
+    <p>Height : {{ pokemon.height }} m</p>
+    <p>Weight : {{ pokemon.weight }} kg</p>
+  </div>
+
+  <div class="pokemon-information">
+    <p>STATS :</p>
+    <p>HP : {{ pokemon.stats[0] }}</p>
+    <p>ATK : {{ pokemon.stats[1] }}</p>
+    <p>DEF : {{ pokemon.stats[2] }}</p>
+    <p>SATK : {{ pokemon.stats[3] }}</p>
+    <p>SDEF : {{ pokemon.stats[4] }}</p>
+    <p>SPEED : {{ pokemon.stats[5] }}</p>
+  </div>
+  <div class="pokemon-sprites">
+    <p class="pokemon-legend">Default / Shiny models</p>
+  </div>
+  <div class="pokemon-sprites">
+    <div>
+      <img class="pokemon-image" src="{{ pokemon.sprites.front_default }}" />
+      <img class="pokemon-image" src="{{ pokemon.sprites.back_default }}" />
+    </div>
+    <div>
+      <img class="pokemon-image" src="{{ pokemon.sprites.front_shiny }}" />
+      <img class="pokemon-image" src="{{ pokemon.sprites.back_shiny }}" />
+    </div>
+  </div>
+  <div class="pokemon_link">
+    <p>
+      Application based on the
+      <a class="pokemon_link" target="_blank" href="https://pokeapi.co/">
+        Pokeapi</a
+      >
+      API and the Angular
+      <a
+        class="pokemon_link"
+        target="_blank"
+        href="https://angular.io/tutorial"
+      >
+        Tower of Heroes</a
+      >
+      tutorial
+    </p>
+  </div>
+</div> -->
+
+<!-- <div *ngIf="pokemon" class="row"> -->
+  <div class="col s12 m8 offset-m2">
+  <h2 class="header center">{{ pokemon.name }}</h2>
+  <div class="card horizontal hoverable">
+    <div class="card-image">
+      <img src="{{pokemon.sprites.front_default}}">
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <table class="bordered striped">
+          <tbody>
+            <tr>
+              <td>Nom</td>
+              <td><strong>{{ pokemon.name }}</strong></td>
+            </tr>
+            <tr>
+              <td>Points de vie</td>
+              <td><strong>{{ pokemon.stats[0] }}</strong></td>
+            </tr>
+            <tr>
+              <td>Attaque</td>
+              <td><strong>{{ pokemon.stats[1] }}</strong></td>
+            </tr>
+            <tr>
+              <td>Défence</td>
+              <td><strong>{{ pokemon.stats[2] }}</strong></td>
+            </tr>
+            <tr>
+              <td>Attaque spéciale</td>
+              <td><strong>{{ pokemon.stats[3] }}</strong></td>
+            </tr>
+            <tr>
+              <td>Défence spéciale</td>
+              <td><strong>{{ pokemon.stats[4] }}</strong></td>
+            </tr>
+            <tr>
+              <td>Vitesse</td>
+              <td><strong>{{ pokemon.stats[5] }}</strong></td>
+            </tr>
+            <tr>
+              <td>Types</td>
+              <td>
+                <div>
+                  <p class="badge">#{{ pokemon.id }}</p>
+                  <div *ngFor="let i of pokemon.types">
+                    <img src="../../assets/{{ i }}" />
+                  </div>
+                </div>  
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-action">
+        <a (click)="goBack()">Retour</a>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- </div> -->
+  <!-- <h4 *ngIf='!pokemon' class="center">Aucun pokémon à afficher !</h4> -->
