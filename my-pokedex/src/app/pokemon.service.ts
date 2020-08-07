@@ -8,21 +8,19 @@ import { Observable } from "rxjs";
 })
 export class PokemonService {
   constructor(private http: HttpClient) {}
+  private API_URL = 'https://pokeapi.co/api/v2/pokemon/';
 
   getPokemonFromLink(link: string): Observable<InterfaceAPIFullDescript> {
     return this.http.get<InterfaceAPIFullDescript>(link);
   }
 
   getPokemonFullDescription(id: number): Observable<InterfaceAPIFullDescript> {
-    return this.http.get<InterfaceAPIFullDescript>(
-      "https://pokeapi.co/api/v2/pokemon/" + id + "/"
-    );
-  }
+  return this.http.get<InterfaceAPIFullDescript>(`${this.API_URL}${id}/`
+  );
+}
 
   getPokemons(limit: number, offset: number): Observable<InterfaceAPI> {
-    // Send the message after fetching the pokemons
-    return this.http.get<InterfaceAPI>(
-      "https://pokeapi.co/api/v2/pokemon/?limit=" + limit + "&offset=" + offset
+    return this.http.get<InterfaceAPI>(`${this.API_URL}?limit=${limit}&offset=${offset}`
     );
   }
 }
