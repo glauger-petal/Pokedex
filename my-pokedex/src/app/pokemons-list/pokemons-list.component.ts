@@ -21,7 +21,6 @@ export class PokemonsListComponent implements OnInit {
 
     ngOnInit() {
       this.getPokemons();
-      this.getListPokemons();
       this.selectedPokemon["id"] = 1;
       this.selectedPokemon["sprites"] = "";
       this.selectedPokemon["stats"] = [];
@@ -30,24 +29,25 @@ export class PokemonsListComponent implements OnInit {
   
     onSelect(pokemon: Pokemon): void {
       this.getPokemonsSelected(pokemon);
-      console.log('Vous avez selectionné ' + pokemon.name);
-      let link = ['/pokemon', pokemon.id];
+      console.log('Vous avez selectionné ' + pokemon.id);
+      let link = ['/pokemon/' + pokemon.id];
+      console.log(link)
       this.router.navigate(link);
     }
   
     getPokemonsSelected(pokemon: Pokemon): void {
       this.pokemonService
-        .getPokemonFullDescription(pokemon.id)
+        .getPokemon(pokemon.id)
         .subscribe(results => {
           this.selectedPokemon.id = results.id;
           this.selectedPokemon.name = results.name;
           this.selectedPokemon.height = results.height / 10;
           this.selectedPokemon.weight = results.weight / 10;
-          let temp: string[] = [];
+          let type: string[] = [];
           for (let i in results.types) {
-            temp.push(results.types[i].type.name + ".png");
+            type.push(results.types[i].type.name);
           }
-          this.selectedPokemon.types = temp;
+          this.selectedPokemon.types = type;
           this.selectedPokemon.sprites = results.sprites;
           let temp_stats: string[] = [];
           for (let i in results.stats) {
@@ -58,7 +58,7 @@ export class PokemonsListComponent implements OnInit {
     }
   
     getPokemons(): void {
-      this.pokemonService.getPokemons(151, this.offset).subscribe(results => {
+      this.pokemonService.getPokemonsList(20, this.offset).subscribe(results => {
         this.offset += 20;
         for (let i in results.results as any) {
           this.pokemonService
@@ -68,11 +68,11 @@ export class PokemonsListComponent implements OnInit {
               newPokemon.id = results.id;
               newPokemon.name = results.name;
               newPokemon.sprites = results.sprites;
-              let temp: string[] = [];
+              let type: string[] = [];
               for (let i in results.types) {
-                temp.push(results.types[i].type.name + ".png");
+                type.push(results.types[i].type.name);
               }
-              newPokemon.types = temp;
+              newPokemon.types = type;
               this.pokemons.push(newPokemon);
             });
           setTimeout(() => {
@@ -81,18 +81,7 @@ export class PokemonsListComponent implements OnInit {
               if (a.id > b.id) return 1;
               return 0;
             });
-          }, 5000);
-        }
-      });
-    }
-  
-    getListPokemons(): void {
-      this.pokemonService.getPokemons(800, 0).subscribe(results => {
-        for (let i in results.results as any) {
-          let newPokemon: Pokemon = new Pokemon();
-          newPokemon.id = +i + 1;
-          newPokemon.name = results.results[i].name;
-          this.list_pokemons.push(newPokemon);
+          }, 500);
         }
       });
     }

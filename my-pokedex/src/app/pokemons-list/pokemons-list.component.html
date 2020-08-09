@@ -1,23 +1,23 @@
 <h1 class='center'>Pokémon</h1>
   <div class='container'>
     <div class="row">
-    <div *ngFor='let pokemon of pokemons' class="col s12 m6 l4">
-      <div class="card horizontal" (click)="onSelect(pokemon)" pkmnBorderCard>
-        <div class="card-image">
-          <img src="{{pokemon.sprites.front_default}}">
-        </div>
-        <div class="card-stacked">
-          <div class="card-content">
+      <div *ngFor='let pokemon of pokemons' class="col s12 m6 l4">
+        <div class="card" [class.selected]="pokemon === selectedPokemon"
+          (click)="onSelect(pokemon)" pkmnBorderCard >
+          <div class="card-image">
+            <img src="{{pokemon.sprites.front_default}}">
+          </div>
+          <div class="card-content center-align padding:5px">
             <p>{{ pokemon.name | uppercase }}</p>
             <div>
               <p class="badge">#{{ pokemon.id }}</p>
-              <div *ngFor="let i of pokemon.types">
-                <img src="../../assets/{{ i }}" />
-              </div>
-            </div>          
+              <span *ngFor='let type of pokemon.types' class="{{ type | pokemonTypeColor }}">{{ type | titlecase }}</span>
+            </div>    
           </div>
         </div>
       </div>
     </div>
-    </div>
+  </div>
+  <div class="center-align">
+    <a class="waves-effect waves-light btn-large" (click)="getPokemons()">Click here to see more pokemon</a>
   </div>

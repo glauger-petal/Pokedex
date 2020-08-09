@@ -1,11 +1,11 @@
-export class InterfaceAPI {
+export class IPokemonList {
   count: number;
   next: string;
   previous: string;
   results: Array<Object>;
 }
 
-export class InterfaceAPIFullDescript {
+export class IPokemonListItem {
   id: number;
   name: string;
   height: number;
@@ -14,3 +14,5 @@ export class InterfaceAPIFullDescript {
   sprites: Object;
   stats: Object;
 }
+
+

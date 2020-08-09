@@ -1,62 +1,64 @@
 
-<!-- <div *ngIf="pokemon" class="row"> -->
+<div class="row">
   <div class="col s12 m8 offset-m2">
-  <h2 class="header center">{{ pokemon.name }}</h2>
-  <div class="card horizontal hoverable">
-    <div class="card-image">
-      <img src="{{pokemon.sprites.front_default}}">
+    <h2 class="header center">{{ pokemon.name | uppercase }} #{{ pokemon.id }}</h2>
+    <div class="card horizontal hoverable">
+      <div class="card-image">
+        <img src="{{pokemon.sprites.front_default}}">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <table class="bordered striped">
+            <tbody>
+              <tr>
+                <td>Points de vie</td>
+                <td><strong>{{ pokemon.stats[0] }}</strong></td>
+              </tr>
+              <tr>
+                <td>Attaque</td>
+                <td><strong>{{ pokemon.stats[1] }}</strong></td>
+              </tr>
+              <tr>
+                <td>Défence</td>
+                <td><strong>{{ pokemon.stats[2] }}</strong></td>
+              </tr>
+              <tr>
+                <td>Attaque spéciale</td>
+                <td><strong>{{ pokemon.stats[3] }}</strong></td>
+              </tr>
+              <tr>
+                <td>Défence spéciale</td>
+                <td><strong>{{ pokemon.stats[4] }}</strong></td>
+              </tr>
+              <tr>
+                <td>Vitesse</td>
+                <td><strong>{{ pokemon.stats[5] }}</strong></td>
+              </tr>
+              <tr>
+                <td>Types</td>
+                <td>
+                  <div>
+                    <span *ngFor='let type of pokemon.types' class="{{ type | pokemonTypeColor }}">{{ type | titlecase }}</span>
+                  </div>  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-action">
+          <a (click)="goBack()">Retour</a>
+        </div>
+      </div>
+        <!-- <div class="pokemon-sprites">
+    <div>
+      <img class="pokemon-image" src="{{ pokemon.sprites.front_default }}" />
+      <img class="pokemon-image" src="{{ pokemon.sprites.back_default }}" />
     </div>
-    <div class="card-stacked">
-      <div class="card-content">
-        <table class="bordered striped">
-          <tbody>
-            <tr>
-              <td>Nom</td>
-              <td><strong>{{ pokemon.name }}</strong></td>
-            </tr>
-            <tr>
-              <td>Points de vie</td>
-              <td><strong>{{ pokemon.stats[0] }}</strong></td>
-            </tr>
-            <tr>
-              <td>Attaque</td>
-              <td><strong>{{ pokemon.stats[1] }}</strong></td>
-            </tr>
-            <tr>
-              <td>Défence</td>
-              <td><strong>{{ pokemon.stats[2] }}</strong></td>
-            </tr>
-            <tr>
-              <td>Attaque spéciale</td>
-              <td><strong>{{ pokemon.stats[3] }}</strong></td>
-            </tr>
-            <tr>
-              <td>Défence spéciale</td>
-              <td><strong>{{ pokemon.stats[4] }}</strong></td>
-            </tr>
-            <tr>
-              <td>Vitesse</td>
-              <td><strong>{{ pokemon.stats[5] }}</strong></td>
-            </tr>
-            <tr>
-              <td>Types</td>
-              <td>
-                <div>
-                  <p class="badge">#{{ pokemon.id }}</p>
-                  <div *ngFor="let i of pokemon.types">
-                    <img src="../../assets/{{ i }}" />
-                  </div>
-                </div>  
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card-action">
-        <a (click)="goBack()">Retour</a>
-      </div>
+    <div>
+      <img class="pokemon-image" src="{{ pokemon.sprites.front_shiny }}" />
+      <img class="pokemon-image" src="{{ pokemon.sprites.back_shiny }}" />
+    </div>
+  </div> -->
     </div>
   </div>
-  </div>
-  <!-- </div> -->
-  <!-- <h4 *ngIf='!pokemon' class="center">Aucun pokémon à afficher !</h4> -->
+</div>

@@ -10,13 +10,17 @@ import { PokemonDetailComponent } from "./pokemon-detail/pokemon-detail.componen
 import { BorderCardDirective } from './border-card.directive';
 import { PageNotFoundComponent } from './page-not-found.components';
 
+import { PokemonTypeColorPipe } from './pokemon-type-color.pipe';
+ 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonsListComponent,
     PokemonDetailComponent,
     BorderCardDirective,
-    PageNotFoundComponent],
+    PageNotFoundComponent,
+    PokemonTypeColorPipe
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
