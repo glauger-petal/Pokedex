@@ -1,1 +1,10 @@
-
+.pokemon-image {
+  height: 150px;
+  width: auto;
+}
+.pokemon-sprites {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  background-color: #eeeeee;
+}

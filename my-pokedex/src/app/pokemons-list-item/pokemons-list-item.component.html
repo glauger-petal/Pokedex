@@ -1,0 +1,14 @@
+<div *ngIf="pokemon" class="col s12 m6 l4">
+  <div class="card" (click)="onClick()" pkmnBorderCard >
+    <div *ngIf="pokemon.imageUrl" class="card-image">
+      <img src="{{pokemon.imageUrl}}">
+    </div>
+    <div class="card-content center-align padding:5px">
+      <p>{{ pokemon.name | uppercase }}</p>
+      <p class="badge">#{{ pokemon.id }}</p>
+      <div>
+        <span *ngFor='let type of pokemon.types' class="{{ type.name | pokemonTypeColor }}">{{ type.name | titlecase}}</span>
+      </div>
+    </div>
+  </div>
+</div>
