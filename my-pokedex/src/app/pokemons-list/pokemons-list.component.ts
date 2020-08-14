@@ -19,6 +19,7 @@ export class PokemonsListComponent implements OnInit {
     ngOnInit() {
       this.pokemonService.getPokemonsList({ limit: 151, offset: 0 }).subscribe(results => {
         this.pokemons = results.results.map(pokemonItem => ({ name: pokemonItem.name, url: pokemonItem.url }))
+        console.log(results)
       })
     }
   }
