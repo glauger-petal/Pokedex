@@ -3,12 +3,13 @@ import { IPokemonList, IPokemon } from "./interfaceAPI";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
-const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
-
 @Injectable({
   providedIn: "root"
 })
 export class PokemonService {
+  private BASE_URL = 'https://pokeapi.co/api/v2';
+  private BASE_URL_POKEMON = "https://pokeapi.co/api/v2/pokemon/";
+
   constructor(private http: HttpClient) {}
 
   getPokemonByUrl(url: string): Observable<IPokemon> {
@@ -16,11 +17,14 @@ export class PokemonService {
   }
 
   getPokemonById(id: string) {
-    return this.getPokemonByUrl(`${BASE_URL}${id}`);
+    return this.getPokemonByUrl(`${this.BASE_URL_POKEMON}${id}`);
   }
 
   getPokemonsList({ limit, offset }: { limit: number, offset: number }): Observable<IPokemonList> {
-    return this.http.get<IPokemonList>(`${BASE_URL}?limit=${limit}&offset=${offset}`);
+    return this.http.get<IPokemonList>(`${this.BASE_URL_POKEMON}?limit=${limit}&offset=${offset}`);
   }
 
+  getBerries(): Observable<any> {
+    return this.http.get<any>(`${this.BASE_URL}/berry`);
+  }
 }

@@ -5,14 +5,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { PokemonsListComponent } from "./pokemons-list/pokemons-list.component";
-import { PokemonsListItemComponent } from "./pokemons-list-item/pokemons-list-item.component";
-import { PokemonDetailComponent } from "./pokemon-detail/pokemon-detail.component";
+import { PokemonsListComponent } from "./Pokemon/pokemons-list/pokemons-list.component";
+import { PokemonsListItemComponent } from "./Pokemon/pokemons-list-item/pokemons-list-item.component";
+import { PokemonDetailComponent } from "./Pokemon/pokemon-detail/pokemon-detail.component";
 import { BorderCardDirective } from './border-card.directive';
 import { PageNotFoundComponent } from './page-not-found.components';
 
-import { PokemonTypeColorPipe } from './pokemon-type-color.pipe';
-import { PokemonStatNameFr } from './pokemon-stat-name-fr.pipe';
+import { PokemonTypeColorPipe } from './Pokemon/pipe/pokemon-type-color.pipe';
+import { PokemonStatNameFr } from './Pokemon/pipe/pokemon-stat-name-fr.pipe';
  
 @NgModule({
   declarations: [
